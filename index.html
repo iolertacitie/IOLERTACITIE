@@ -2,208 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>IOLERTACITIE</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOLERTACITIE</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
-            background-color: rgb(0, 0, 0);
-            color: white;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 80vh; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(180deg, rgba(0,0,0,0) 70%, rgba(0,0,0,1) 100%), 
-                        url('video.gif') no-repeat center center;
-            background-size: cover;
-        }
-
-@media (max-width: 768px) {
-    .hero {
-        height: 40vh; 
-    }
-}
-
-.hero-logo {
-    width: 80%;
-    max-width: 900px;
-    height: auto;
-    
-    display: block;
-    z-index: 2;
-    pointer-events: auto;
-    
-    transition: transform 0.2s ease-out;
-    transform-style: preserve-3d;
-    transform-origin: center center;
-    backface-visibility: hidden;
-}
-
-.static-wrapper {
-    width: 100%;
-    position: relative;
-    background-color: black;
-    overflow: hidden;
-}
-
-
-.static-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    
-    
-    background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%),
-                url('static.PNG') no-repeat center center;
-    background-size: cover;
-    
-    opacity: 0.5; 
-    z-index: 1;
-}
-
-.content-container {
-    position: relative; 
-    z-index: 2;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 150px 25px; 
-    text-align: justify;
-    line-height: 1.6;
-    font-size: 18px;
-    text-shadow: black 0px 0px 20px;
-    text-transform: uppercase;
-}
-
-
-        .footer {
-            background-color: black;
-            border-top: 1px solid white;
-            padding: 30px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 100px;
-            text-align: center;
-        }
-
-        .contact-info {
+            background-color: #090909;
+            color: #EEEEEE;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 5px;
         }
 
-        .label { text-align: left; font-size: 10px; letter-spacing: 1px; }
-        .email { text-align: left; font-size: 16px; }
+        /* Контейнер для контенту (фото + текст) */
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex: 1; /* Дозволяє контенту займати весь доступний простір, штовхаючи футер вниз */
+        }
+
+        .profile-img {
+            width: 311px;
+            height: 455px;
+            margin-top: 300px;
+            object-fit: cover;
+        }
+
+        .bio-text {
+            max-width: 740px;
+            padding: 60px 20px;
+            margin-top: 300px;
+            margin-bottom: 50px; /* ПРОСТІР 50px МІЖ ТЕКСТОМ І ФУТЕРОМ */
+            text-align: justify;
+            font-size: 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        /* Footer на всю ширину екрану */
+        .footer {
+            width: 100%; 
+            border-top: 0.5px #EEEEEE solid;
+            padding: 25px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 1400px; /* Вміст футера вирівняний по сітці сайту */
+        }
+
+        .contact-box {
+            font-weight: 500;
+        }
+
+        .label { font-size: 10px; display: block; }
+        .email { font-size: 14px; }
 
         .social-icons {
             display: flex;
-            gap: 20px;
-            align-items: center;
+            gap: 15px;
         }
 
         .social-icons svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
-            transition: opacity 0.3s;
+            fill: #EEEEEE;
         }
 
-        .social-icons svg:hover { opacity: 0.7; }
-
         @media (max-width: 768px) {
-            .content-container { font-size: 16px; padding: 80px 25px; }
-            .footer { flex-direction: column; gap: 30px; }
+            .bio-text { font-size: 16px; margin-top: 100px; margin-bottom: 30px; }
+            .profile-img { width: 100%; height: auto; margin-top: 100px; }
+            .footer-content { gap: 20px; flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <svg class="hero-logo" viewBox="0 0 979 148" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 148L0.495584 0.219849H32.8531L32.3575 148H0ZM106.223 147.512C91.4943 147.512 78.5513 146.34 67.3935 140.038C56.3844 133.736 47.7559 124.942 41.5074 113.657C35.4078 102.225 32.358 89.035 32.358 74.0859C32.358 58.8439 35.4078 45.5801 41.5074 34.2951C47.7559 23.0099 56.3844 14.2163 67.3935 7.91426C78.5513 1.61217 91.4939 0.220484 106.222 0.220484C120.95 0.220484 133.819 1.61217 144.828 7.91426C155.986 14.0698 164.615 22.7901 170.714 34.0752C176.814 45.2139 179.864 58.2574 179.864 73.2065C179.864 88.4489 176.814 101.786 170.714 113.217C164.615 124.649 155.986 133.59 144.828 140.038C133.819 146.34 120.951 147.512 106.223 147.512ZM106.223 121.571C118.57 121.571 128.389 117.248 135.679 108.601C142.969 99.954 146.614 88.4489 146.614 74.0859C146.614 64.5598 144.903 56.2059 141.481 49.0241C138.208 41.8429 133.522 36.2736 127.422 32.3165C121.323 28.3594 114.256 26.4541 106.223 26.6007C98.189 26.4541 91.1221 28.3594 85.0228 32.3165C79.0717 36.2736 74.3854 41.8429 70.964 49.0241C67.5422 56.2059 65.8315 64.5598 65.8315 74.0859C65.8315 83.6124 67.4676 91.9664 70.7409 99.1476C74.1623 106.183 78.9231 111.679 85.0228 115.636C91.1221 119.593 98.189 121.571 106.223 121.571ZM177.679 147.512V0.219849H210.037V118.933H263.594V147.512H177.679ZM256.978 147.512V0.219849H347.356V27.9197H288.889V57.1582H337.314V83.9787H288.889V118.933H347.356V147.512H256.978ZM345.408 147.512V0.219849C348.83 0.0732858 352.698 0 357.013 0C361.327 0 365.79 0 370.402 0C375.014 0 379.551 0 384.014 0C388.477 0 392.345 0.0732858 395.618 0.219849C413.173 0.806083 425.968 5.05634 434.001 12.9706C442.035 20.7382 446.052 30.7043 446.052 42.8686C446.052 53.5678 443.225 62.7276 437.572 70.3486C432.067 77.8232 424.331 82.8065 414.363 85.2977C417.785 87.9358 421.132 91.5267 424.405 96.0699C427.678 100.467 432.067 106.989 437.572 115.636C440.398 119.886 442.704 123.623 444.489 126.847C446.423 130.072 448.283 133.223 450.068 136.301C451.854 139.232 453.862 143.555 456.093 147.512H418.603L393.387 100.467C390.56 95.3374 388.031 92.2596 385.8 91.2334C383.568 90.0612 380.444 89.4747 376.427 89.4747V147.512H345.408ZM376.427 65.0724H390.263C397.999 65.0724 404.024 63.1673 408.338 59.3566C412.652 55.5463 414.81 50.4166 414.81 43.9678C414.81 31.9501 407.222 25.9411 392.048 25.9411H376.427V65.0724ZM473.848 147.512V27.9197H433.236L395.618 0.219849H546.596V27.9197H506.428V147.512H473.848ZM511.324 147.512L565.774 0.219849H604.603L661.035 147.512H626.25L614.199 113.217H555.732L544.351 147.512H511.324ZM565.105 85.9572H604.603L584.519 29.8983L565.105 85.9572ZM714.593 147.512C690.938 147.512 671.711 143.189 658.174 130.585C644.785 117.981 638.09 100.174 638.09 77.1636C638.09 61.1887 641.214 47.3388 647.463 35.6141C653.858 23.7427 662.784 14.5095 674.241 7.91426C685.845 1.31904 699.534 0.219849 714.856 0.219849C721.251 0.219849 732.445 0.219419 732.445 0.219419L743.143 0.219849V32.976C738.233 30.7776 734.493 29.0921 729.584 27.9197C724.674 26.7472 719.765 26.161 714.856 26.161C701.167 26.161 690.384 30.5578 682.498 39.3514C674.763 48.1448 670.894 59.7233 670.894 74.0859C670.894 88.8886 675.058 100.394 683.391 108.601C691.723 116.808 703.251 120.912 717.98 120.912C722.443 120.912 727.053 120.546 731.815 119.813C736.725 118.933 738.532 117.888 743.143 116.422V147.512C743.143 147.512 728.428 147.512 714.593 147.512ZM743.143 147.512V0.219849H775.5V147.512H743.143ZM815.619 147.512V27.9197H775.005V0.219849H888.368V27.9197H848.2V147.512H815.619ZM888.002 147.512V0.219849H920.359V147.512H888.002ZM888.622 147.512V0.219849H979V27.9197H920.533V57.1582H968.958V83.9787H920.533V118.933H979V147.512H888.622Z" fill="white"/>
-        </svg>
-    </section>
+    <div class="wrapper">
+        <img src="Iolertacitie.png" alt="Iolertacitie" class="profile-img">
 
-    <div class="static-wrapper">
-        <main class="content-container">
-            <p>Iolertacitie — sound producer 4+ years of experience. I started with beatmaking and audio editing in FL Studio, gradually moving into mixing, mastering, and full production workflows.</p>
-            <p>I have produced over 400+ beats and created dozens of full songs, both for various artists and for my own projects. My work covers the full production cycle — from initial musical concepts to the final release-ready version.</p>
-            <p>In addition to music production, I also handle the visual aspect of a composition, including cover art, promotional design, and video materials. I have experience creating promotional campaigns, designing single and album covers, editing visual content, and preparing complete promo packages for releases across digital platforms.</p>
-        </main>
+        <div class="bio-text">
+            Iolertacitie (Andre) a sound engineer 4+ years of experience. I started with beatmaking and audio editing in FL Studio, gradually moving into mixing, mastering, and full production workflows.<br/><br/>
+            I have produced over 400+ beats and created dozens of full songs, both for various artists and for my own projects. My work covers the full production cycle — from initial musical concepts to the final release-ready version.<br/><br/>
+            In addition to music production, I also handle the visual aspect of a composition, including cover art, promotional design, and video materials. I have experience creating promotional campaigns, designing single and album covers, editing visual content, and preparing complete promo packages for releases across digital platforms.
+        </div>
     </div>
 
     <footer class="footer">
-        <div class="contact-info">
-            <span class="label">EMAIL FOR CONTACT AND BUSINESS OFFERS</span>
-            <span class="email">iolertacitie@gmail.com</span>
+        <div class="footer-content">
+            <div class="contact-box">
+                <span class="label">EMAIL FOR CONTACT</span>
+                <span class="email">iolertacitie@gmail.com</span>
+            </div>
+            
+            <div class="social-icons">
+                <svg width="30" height="30" viewBox="0 0 30 30"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.73635 0.182669C6.31342 0.291992 4.21336 0.884367 2.51761 2.57296C0.815929 4.27043 0.230911 6.37881 0.121316 8.77654C0.0531898 10.2731 -0.345179 21.5792 0.810007 24.5442C1.58902 26.5445 3.1233 28.0825 5.14192 28.864C6.08384 29.2304 7.15908 29.4784 8.73635 29.5508C21.9247 30.1476 26.8135 29.8227 28.8751 24.5442C29.2409 23.6046 29.4927 22.5303 29.5623 20.9569C30.165 7.73474 29.4645 4.86875 27.166 2.57296C25.3429 0.754356 23.1984 -0.48361 8.73635 0.182669ZM8.85776 26.8916C7.41378 26.8266 6.63034 26.586 6.10754 26.3836C4.79241 25.8724 3.80458 24.8887 3.2966 23.5812C2.41688 21.3283 2.70865 10.6279 2.78714 8.89645C2.86415 7.20046 3.20774 5.65044 4.4044 4.4538C5.8854 2.97645 7.79885 2.25242 20.8273 2.84041C22.5275 2.91722 24.0811 3.26011 25.2807 4.4538C26.7617 5.93114 27.4963 7.85931 26.8979 20.8377C26.8328 22.2782 26.5914 23.0597 26.3885 23.5812C25.0482 27.0161 21.9647 27.4929 8.85776 26.8916ZM20.9709 6.98C20.9709 7.95801 21.7663 8.75328 22.7482 8.75328C23.7301 8.75328 24.5269 7.95801 24.5269 6.98C24.5269 6.00201 23.7301 5.20745 22.7482 5.20745C21.7663 5.20745 20.9709 6.00201 20.9709 6.98ZM7.23756 14.866C7.23756 19.0557 10.6424 22.4526 14.8425 22.4526C19.0427 22.4526 22.4475 19.0557 22.4475 14.866C22.4475 10.6763 19.0427 7.2816 14.8425 7.2816C10.6424 7.2816 7.23756 10.6763 7.23756 14.866ZM9.90633 14.866C9.90633 12.1477 12.116 9.94225 14.8425 9.94225C17.5691 9.94225 19.7787 12.1477 19.7787 14.866C19.7787 17.5858 17.5691 19.7919 14.8425 19.7919C12.116 19.7919 9.90633 17.5858 9.90633 14.866Z"/></svg>
+                <svg width="29" height="30" viewBox="0 0 29 30"><path d="M20.4281 8.97908C20.4338 8.97908 20.4415 8.97908 20.4492 8.97908C20.6505 8.97908 20.8373 9.04383 20.9903 9.15538L20.9874 9.15339C21.0991 9.25398 21.1742 9.39542 21.1925 9.55478V9.55777C21.2118 9.67928 21.2224 9.81873 21.2224 9.96116C21.2224 10.0259 21.2205 10.0896 21.2156 10.1534V10.1444C20.999 12.504 20.0593 18.2261 19.5817 20.8675C19.3795 21.9861 18.9819 22.3606 18.5968 22.3964C17.7601 22.4771 17.1246 21.8247 16.3139 21.2749C15.045 20.4133 14.3277 19.8775 13.0962 19.0378C11.6722 18.0687 12.5956 17.5339 13.4062 16.6633C13.619 16.4343 17.3076 12.9631 17.3798 12.6484C17.3836 12.6295 17.3856 12.6086 17.3856 12.5867C17.3856 12.509 17.3576 12.4382 17.3124 12.3845C17.2623 12.3506 17.1997 12.3317 17.1343 12.3317C17.0909 12.3317 17.0495 12.3406 17.011 12.3556L17.0129 12.3546C16.8859 12.3845 14.8588 13.7703 10.9318 16.512C10.5034 16.8616 9.96225 17.0827 9.37301 17.1086H9.36723C8.53247 17.004 7.77473 16.8118 7.05551 16.5378L7.12676 16.5618C6.22364 16.257 5.50634 16.0966 5.56796 15.5807C5.6007 15.3124 5.95822 15.0378 6.64054 14.757C10.8435 12.8625 13.6463 11.6139 15.0488 11.011C16.5961 10.1614 18.3898 9.46215 20.2759 9.00896L20.4271 8.97809L20.4281 8.97908ZM14.4663 0C6.47301 0.0199203 0 6.72809 0 15C0 23.2839 6.4913 30 14.5 30C22.5087 30 29 23.2849 29 15C29 6.72809 22.527 0.0199203 14.5356 0H14.5337C14.5112 0 14.4888 0 14.4663 0Z"/></svg>
+                <svg width="31" height="30" viewBox="0 0 31 30"><path d="M24.4125 0H29.1671L18.7821 12.7076L31 30H21.4346L13.9423 19.5103L5.36881 30H0.61225L11.7199 16.4069L0 0H9.80956L16.5811 9.58552L24.4125 0ZM22.7463 26.9545H25.3813L8.37581 2.88621H5.55094L22.7463 26.9545Z"/></svg>
+                <svg width="30" height="21" viewBox="0 0 30 21"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.8899 14.2679V5.91532C14.8551 7.31058 17.1516 8.65843 19.8677 10.1116C17.6275 11.354 14.8551 12.748 11.8899 14.2679ZM28.4149 1.76119C27.9034 1.08731 27.0317 0.562745 26.1036 0.389079C23.3756 -0.128956 6.3569 -0.130429 3.63042 0.389079C2.88616 0.528601 2.22342 0.865846 1.6541 1.38982C-0.744736 3.61631 0.00694511 15.5562 0.585157 17.4903C0.828301 18.3275 1.14262 18.9312 1.53848 19.3276C2.04849 19.8515 2.74678 20.2123 3.54886 20.3741C5.79499 20.8387 17.3666 21.0985 26.0561 20.4439C26.8567 20.3043 27.5654 19.9319 28.1243 19.3857C30.3423 17.1681 30.1911 4.55766 28.4149 1.76119Z"/></svg>
+            </div>
         </div>
-
-         <div class="social-icons">
-
-<a href="https://www.instagram.com/iolertacitie/"><svg viewBox="0 0 30 30"><path d="M8.73635 0.182669C6.31342 0.291992 4.21336 0.884367 2.51761 2.57296C0.815929 4.27043 0.230911 6.37881 0.121316 8.77654C0.0531898 10.2731 -0.345179 21.5792 0.810007 24.5442C1.58902 26.5445 3.1233 28.0825 5.14192 28.864C6.08384 29.2304 7.15908 29.4784 8.73635 29.5508C21.9247 30.1476 26.8135 29.8227 28.8751 24.5442C29.2409 23.6046 29.4927 22.5303 29.5623 20.9569C30.165 7.73474 29.4645 4.86875 27.166 2.57296C25.3429 0.754356 23.1984 -0.48361 8.73635 0.182669ZM8.85776 26.8916C7.41378 26.8266 6.63034 26.586 6.10754 26.3836C4.79241 25.8724 3.80458 24.8887 3.2966 23.5812C2.41688 21.3283 2.70865 10.6279 2.78714 8.89645C2.86415 7.20046 3.20774 5.65044 4.4044 4.4538C5.8854 2.97645 7.79885 2.25242 20.8273 2.84041C22.5275 2.91722 24.0811 3.26011 25.2807 4.4538C26.7617 5.93114 27.4963 7.85931 26.8979 20.8377C26.8328 22.2782 26.5914 23.0597 26.3885 23.5812C25.0482 27.0161 21.9647 27.4929 8.85776 26.8916ZM20.9709 6.98C20.9709 7.95801 21.7663 8.75328 22.7482 8.75328C23.7301 8.75328 24.5269 7.95801 24.5269 6.98C24.5269 6.00201 23.7301 5.20745 22.7482 5.20745C21.7663 5.20745 20.9709 6.00201 20.9709 6.98ZM7.23756 14.866C7.23756 19.0557 10.6424 22.4526 14.8425 22.4526C19.0427 22.4526 22.4475 19.0557 22.4475 14.866C22.4475 10.6763 19.0427 7.2816 14.8425 7.2816C10.6424 7.2816 7.23756 10.6763 7.23756 14.866ZM9.90633 14.866C9.90633 12.1477 12.116 9.94225 14.8425 9.94225C17.5691 9.94225 19.7787 12.1477 19.7787 14.866C19.7787 17.5858 17.5691 19.7919 14.8425 19.7919C12.116 19.7919 9.90633 17.5858 9.90633 14.866Z"/></svg></a>
-
-<a href="https://t.me/zaiats01"><svg viewBox="0 0 30 30"><path d="M20.4281 8.97908C20.4338 8.97908 20.4415 8.97908 20.4492 8.97908C20.6505 8.97908 20.8373 9.04382 20.9903 9.15538L20.9874 9.15339C21.0991 9.25398 21.1742 9.39542 21.1925 9.55478V9.55777C21.2118 9.67928 21.2224 9.81873 21.2224 9.96116C21.2224 10.0259 21.2205 10.0896 21.2156 10.1534V10.1444C20.999 12.504 20.0593 18.2261 19.5817 20.8675C19.3795 21.9861 18.9819 22.3606 18.5968 22.3964C17.7601 22.4771 17.1246 21.8247 16.3139 21.2749C15.045 20.4133 14.3277 19.8775 13.0962 19.0378C11.6722 18.0687 12.5956 17.5339 13.4062 16.6633C13.619 16.4343 17.3076 12.9631 17.3798 12.6484C17.3836 12.6295 17.3856 12.6086 17.3856 12.5867C17.3856 12.509 17.3576 12.4382 17.3124 12.3845C17.2623 12.3506 17.1997 12.3317 17.1343 12.3317C17.0909 12.3317 17.0495 12.3406 17.011 12.3556L17.0129 12.3546C16.8859 12.3845 14.8588 13.7703 10.9318 16.512C10.5034 16.8616 9.96225 17.0827 9.37301 17.1086H9.36723C8.53247 17.004 7.77473 16.8118 7.05551 16.5378L7.12676 16.5618C6.22364 16.257 5.50634 16.0966 5.56796 15.5807C5.6007 15.3124 5.95822 15.0378 6.64054 14.757C10.8435 12.8625 13.6463 11.6139 15.0488 11.011C16.5961 10.1614 18.3898 9.46215 20.2759 9.00896L20.4271 8.97809L20.4281 8.97908ZM14.4663 0C6.47301 0.0199203 0 6.72809 0 15C0 23.2839 6.4913 30 14.5 30C22.5087 30 29 23.2849 29 15C29 6.72809 22.527 0.0199203 14.5356 0H14.5337C14.5112 0 14.4888 0 14.4663 0Z"/></svg></a>
-
-<a href="https://x.com/iolertacitie"><svg viewBox="0 0 31 30"><path d="M24.4125 0H29.1671L18.7821 12.7076L31 30H21.4346L13.9423 19.5103L5.36881 30H0.61225L11.7199 16.4069L0 0H9.80956L16.5811 9.58552L24.4125 0ZM22.7462 26.9545H25.3813L8.37581 2.88621H5.55094L22.7462 26.9545Z"/></svg></a>
-
-<a href="https://www.youtube.com/@iolertacitie"><svg viewBox="0 0 30 21"><path d="M11.8899 14.2679V5.91532C14.8551 7.31058 17.1516 8.65843 19.8677 10.1116C17.6275 11.354 14.8551 12.748 11.8899 14.2679ZM28.4149 1.76119C27.9034 1.08731 27.0317 0.562745 26.1036 0.389079C23.3756 -0.128956 6.3569 -0.130429 3.63042 0.389079C2.88616 0.528601 2.22342 0.865846 1.6541 1.38982C-0.744736 3.61631 0.00694511 15.5562 0.585157 17.4903C0.828301 18.3275 1.14262 18.9312 1.53848 19.3276C2.04849 19.8515 2.74678 20.2123 3.54886 20.3741C5.79499 20.8387 17.3666 21.0985 26.0561 20.4439C26.8567 20.3043 27.5654 19.9319 28.1243 19.3857C30.3423 17.1681 30.1911 4.55766 28.4149 1.76119Z"/></svg></a>
-
-</div> 
     </footer>
 
 </body>
-<script>
-    const hero = document.querySelector('.hero');
-    const logo = document.querySelector('.hero-logo');
-    
-    hero.addEventListener('mousemove', (e) => {
-        const rect = logo.getBoundingClientRect();
-        
-        
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        
-        
-        const mouseX = e.clientX - centerX;
-        const mouseY = e.clientY - centerY;
-        
-        
-        const distance = Math.sqrt(mouseX**2 + mouseY**2);
-        const maxDistance = 400; 
-
-        if (distance < maxDistance) {
-            const sensitivity = 15;
-            const maxRotation = 15;
-            
-            let xRotation = (mouseY / sensitivity) * -1;
-            let yRotation = (mouseX / sensitivity);
-            
-            
-            xRotation = Math.max(Math.min(xRotation, maxRotation), -maxRotation);
-            yRotation = Math.max(Math.min(yRotation, maxRotation), -maxRotation);
-            
-            logo.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale3d(1.05, 1.05, 1.05)`;
-        } else {
-            
-            logo.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-        }
-    });
-
-    
-    hero.addEventListener('mouseleave', () => {
-        logo.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    });
-</script>
 </html>
